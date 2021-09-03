@@ -71,3 +71,29 @@ When we want to import everything we use * as... if we think about it , this mod
  Babel works with plugins and presets that can both be configured. A plogin is a specific JS feature that we want to transpile. Instead of speacify the plagin for every feature like var and const, babel uses presets. So preset is a bunch of plugin bundled together.We use @babel/preset-env which is basically not part of this preset, does actually only include final features.
  But there is some new features that they added recetly to language, so they can not be transpiled, like Promise, find... We can **polyfill** them. Now Babel used to do polyfilling out of the box some time ago but recently they started to simply recommending another library. And so we now have to manually import data as well. So import Core-js so that's the name of the library. And then we usually only want to import a part of that library and that's called Stable. with it evey thing change to understandable form for old browser.
  The another package that we need install is called NPM install regenerator-runtime, and we need import "regenerator-runtime/runtime" this here is for polyfilling async functions.
+ # Declarative and Functional JavaScript Principles
+There two fundamentally different ways of writing code in programing(paradigms). 
+1.	**Imperative** code: whenwver we write imprerative code, we need to explain to the computer how to do a certain things. We need to explain ant single step that the computer needs to follow in order to achieve a certain result. But this might sound a little bit abstract. 
+const array1 = [1,2,3]
+const newArray1 = []
+for (let i=0; i <= array1.length; i++) {
+  newArray1[i] = array1[i] * 2
+}
+2.	**Declarative** code: When we write declarative code, we simply describe the way that the computer should achieve a certain result. We do not care about how it should do it.
+const array2 = [ 3,4,5]
+const arrayCopy = array2.map(num => num * 2)
+console.log(arrayCopy);
+The declarative paradigm is actually a really big and popular programming paradigm which has given rise to a sub paradigm called functional programming. 
+
+**Functional programming** and writing declarative code, has now basically become the modern way of writing code in the JavaScript world.
+Functional programming is a declarative paradigm which is based on the idea of writing software, simply by combining multiple so called pure functions, while avoiding side effects and mutating data.
+**Side effect**:  a side effect is basically simply a modification of any data that's outside of a function. So, for example, mutating any variable that is external to the function is causing a side effect. So basically, any variable that is outside of the scope of the function, Now, data does not only refer to variables, so for example, logging stuff to the console, or also changing something in the DOM, is also causing side effects.
+**Pure function**: a pure function, is a function without side effects. So, basically a function that does not mutate any external variables, and that does also not depend on any external variables. So basically, if we give the same inputs to a pure function, it will always return the same output and again, that's because it does not depend on any external variables, and it also does not manipulate them. Pure function like map, filter and reduce.
+**Immiutability**: So, in functional programming state, which also means basically data is never modified. So, let's say that we have some application,
+and we have an object there to keep track of all the data that we need in an application. And so that we usually called state, and so again, in functional programming, that state is never modified. Instead, what we will do is to copy that object, so that state, and then it is that copy that is mutated, and can then be returned, but the original state is never touched.
+**Functional Programming Techniques**: Try to avoid data mutations, using built-in methods  that doesn’t produce side effects., do data transformations with methods such as .map(), filter(), and .reduce()., Try to avoid side effects in functions: this is of course not always possible.
+**Declarative Syntax**: Use array and object destructuring, Use the spread operator(…), Use the ternary (conditional) operator, Use template literals
+
+**Some Example**:  1. for making immutable >>Object.freeze() >> we can not add new property in this. But we can change inside the object or array. If we don’t want it to happen we have to use deep freeze. 2. The function that manipulate the other function or object that is outside of it, is an impure function and it is side effect.
+
+
